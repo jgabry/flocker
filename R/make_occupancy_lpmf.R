@@ -941,9 +941,9 @@ make_occupancy_single_fp_lpdf <- function (max_rep) {
       array[vint2[i]] int indices = index_array[i, 1:vint2[i]];
       lp += log_sum_exp(
         bernoulli_logit_lpmf(1 | occ[i]) + 
-          emission_1_fp(to_row_vector(mu[indices]), vr[indices], vor[indices]),
+          emission_1_fp(to_row_vector(mu[indices]), to_row_vector(vr[indices]), to_row_vector(vor[indices])),
         bernoulli_logit_lpmf(0 | occ[i]) +
-          emission_0_fp(vr[indices])
+          emission_0_fp(to_row_vector(vr[indices]))
         );
     }
     return(lp);
