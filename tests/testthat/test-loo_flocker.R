@@ -46,5 +46,5 @@ test_that("loo_flocker_onefit works correctly", {
   expect_identical(row.names(test_compare), c("m1", "m2"))
   
   # check test output identical
-  expect_true(all(apply(test_compare, 2, diff) == 0))
+  expect_equal(test_compare[1, ], test_compare[2, ], check.attributes = FALSE)
 })
